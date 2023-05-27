@@ -1,0 +1,19 @@
+<h1>New Game</h1>
+<div class="d-flex letters">
+  <% @letters.each do |letter|%>
+  <div class="letter-title">
+    <%= letter %>
+  </div>
+  <% end %>
+</div>
+<form action="/score" method="get" data-turbo="false" class="d-flex flex-column align-item-center">
+    <label for="input" class="text-center my-3">Enter your best word!</label>
+    <div class="row d-flex justify-content-center">
+      <input type="text" name="input" class="input-text col-5" value=<%= params[:input] %>>
+      <input type="submit" value="Submit" class="input-submit col-1">
+    </div>
+    <%= hidden_field_tag :game, @letters %>
+    <%= hidden_field_tag :start_time, @startTime %>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </div>
+</form>
